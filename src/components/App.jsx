@@ -13,11 +13,11 @@ export default class App extends Component {
   submitTask = () => {
     const { notes, text } = this.state;
 
-    const newNotes = { text: text };
+    const newNotes = { text };
 
     notes.push(newNotes);
 
-    this.setState({ notes: notes });
+    this.setState({ notes });
   }
 
   render() {
