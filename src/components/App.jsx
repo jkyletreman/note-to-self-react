@@ -5,12 +5,12 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      test: "",
+      text: "",
       notes: []
     };
   }
 
-  submitTask() => {
+  submitTask = () => {
     const notes = this.state.notes;
 
     const newNotes = { text: this.state.text };
@@ -28,11 +28,18 @@ export default class App extends Component {
         <Form inline>
           <FormControl
             onChange={e => {
-              this.setState({ test: e.target.value });
+              this.setState({ text: e.target.value });
             }}
           />
-          <Button onClick={() => this.submitTask}>Submit</Button>
+          <Button onClick={() => this.submitTask()}>Submit</Button>
         </Form>
+        {
+          this.state.notes.map(note => {
+            return (
+              <div>{note.text}</div>
+            )
+          })
+        }
       </div>
     );
   }
