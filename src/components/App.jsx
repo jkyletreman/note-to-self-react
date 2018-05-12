@@ -5,8 +5,19 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      test: ""
+      test: "",
+      notes: []
     };
+  }
+
+  submitTask() => {
+    const notes = this.state.notes;
+
+    const newNotes = { text: this.state.text };
+
+    notes.push(newNotes);
+
+    this.setState({ notes: notes });
   }
 
   render() {
@@ -20,7 +31,7 @@ export default class App extends Component {
               this.setState({ test: e.target.value });
             }}
           />
-          <Button onClick={() => console.log(this.state)}>Submit</Button>
+          <Button onClick={() => this.submitTask}>Submit</Button>
         </Form>
       </div>
     );
