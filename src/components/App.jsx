@@ -13,9 +13,7 @@ export default class App extends Component {
   submitTask = () => {
     const { notes, text } = this.state;
 
-    const newNotes = { text };
-
-    notes.push(newNotes);
+    notes.push(text);
 
     this.setState({ notes });
   }
