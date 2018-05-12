@@ -34,9 +34,9 @@ export default class App extends Component {
           <Button onClick={() => this.submitTask()}>Submit</Button>
         </Form>
         {
-          this.state.notes.map(note => {
+          this.state.notes.map((note, i) => {
             return (
-              <div>{note.text}</div>
+              <div key={i}>{note.text}</div>
             )
           })
         }
