@@ -13,7 +13,8 @@ export default class App extends Component {
     return (
       <div>
         <h2>Not to Self</h2>
-        <Form>
+        {/* short hand for inline={true} */}
+        <Form inline>
           <FormControl
             onChange={e => {
               this.setState({ test: e.target.value });
