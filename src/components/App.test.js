@@ -32,6 +32,7 @@ describe("App", () => {
   describe("when creating a note", () => {
     let testNote = 'test note';
     // simulate user interaction before running test block
+    // this adds a note to a cookie as well
     beforeEach(() => {
       app.find('FormControl').simulate('change', {
         target: { value: testNote }
@@ -46,10 +47,26 @@ describe("App", () => {
       beforeEach(() => {
         app.find('.btn').at(0).simulate('click');
       });
-
+      // this is simulating a clear event, erasing the cookies as well
+      afterEach(() => {
+        app.find('.btn').at(1).simulate('click')
+      });
+      // once the cookies have been cleared the only note is the prop we passed
       it("adds the new note to state", () => {
         expect(app.state().notes[0].text).toEqual(testNote)
       });
+
+      describe('and remounting the component', () => {
+        let app2;
+        // delay mount until this test block is run
+        beforeEach(() => {
+          app2 = mount(<App />);
+        });
+
+        it('reads the stored note cookies', () => {
+          expect(app2.state().notes).toEqual([{ text: testNote }])
+        })
+      })
 
       describe("and clicking the clear button", () => {
         beforeEach(() => {
