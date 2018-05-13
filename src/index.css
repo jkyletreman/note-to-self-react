@@ -1,4 +1,13 @@
 * {
   text-align: center;
-  padding: 1rem;
+  padding: .5rem;
+}
+
+.note {
+  border: 1px solid rgb(151, 156, 149);
+  border-radius: 5px;
+  font-style: italic;
+  text-align: left;
+  padding: 8px;
+  margin: 30px;
 }
