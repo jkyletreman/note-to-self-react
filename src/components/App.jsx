@@ -36,7 +36,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h2>Not to Self</h2>
+        <h2>Note to Self</h2>
         {/* short hand for inline={true} */}
         <Form inline>
           <FormControl
