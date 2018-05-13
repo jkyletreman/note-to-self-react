@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
+import Note from './Note'
 
 export default class App extends Component {
   constructor() {
@@ -34,7 +35,7 @@ export default class App extends Component {
         {
           this.state.notes.map((note, i) => {
             return (
-              <div key={i}>{note.text}</div>
+              <Note key={i} note={note} />
             )
           })
         }
