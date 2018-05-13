@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
 import Note from './Note'
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
+
+const cookie_key = "NOTES";
 
 export default class App extends Component {
   constructor() {
@@ -11,12 +14,23 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ notes: read_cookie(cookie_key) });
+  }
+
   submitTask = () => {
     const { notes, text } = this.state;
 
     notes.push({ text });
 
     this.setState({ notes });
+    // saving a cookie everytime a note is added
+    bake_cookie(cookie_key, this.state.notes);
+  }
+
+  clearNotes = () => {
+    delete_cookie(cookie_key);
+    this.setState({ notes: [] })
   }
 
   render() {
@@ -39,6 +53,9 @@ export default class App extends Component {
             )
           })
         }
+        {/* header ruler */}
+        <hr/>
+        <Button onClick={() => { this.clearNotes() }}>Clear Notes</Button>
       </div>
     );
   }
